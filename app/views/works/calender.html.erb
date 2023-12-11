@@ -1,0 +1,50 @@
+<div class="all1">
+  <div class="works-container">
+    <% @works.each do |t| %>
+      <div class="work">
+        <div class="left-container">
+          <%= t.exercise %><%= t.menu %>
+          <%= image_tag t.photo_url, size: "250x200" if t.photo? %>
+        </div>
+      
+        <div class="right-container">
+          <%= link_to "詳細へ", work_path(t.id) %>
+          <%= link_to "編集する", edit_work_path(t.id) %>
+          <%= button_to "削除する", work_path(t.id), method: :delete %>
+
+          <%= t.user.email %> 
+
+          <% if user_signed_in? %>
+          <% if current_user.already_disliked?(t) %>
+              <%= link_to work_dislike_path(id: t.id, work_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.dislikes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to work_dislikes_path(id: t.id, work_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.dislikes.count %>
+              <% end %>
+          <% end %>
+          <% else %>
+          <i class="far fa-heart"></i><%= t.dislikes.count %>
+          <% end %>
+          <p class="time"><%= t.created_at %></p>
+        </div>
+      </div>
+      </div>
+    <% end %>
+      
+
+    <div class="calendar">
+      <%= month_calendar events: @works do |date, works| %>
+          <%= date.day %>
+        
+          <% works.each do |work| %>
+            <div>
+            <%= link_to work.exercise, work_path(work.id)  %>
+              <%= link_to work.menu, work_path(work.id)  %>
+              </div>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

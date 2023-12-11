@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+
+ 
+
+ * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+      Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+
+  }
+  header {
+    padding-top: 20px;
+    background-color: rgba(2, 1, 28, 0);
+    height: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header a {
+    color: rgb(21, 2, 2); 
+    text-decoration: none; 
+  }
+  .head1 {
+    margin-top:5px;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .head2 {
+    padding: 0px 10px;
+    display: flex;
+  }
+
+  header h1 {
+    color: rgb(26, 2, 2);
+    margin-left: 20px;
+  }
+  .header-list {
+    align-items: center;
+    padding: 20px 50px;
+  }
+  header ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  header li {
+    list-style: none;
+    margin-right: 40px;
+  }
+  footer {
+    color: white;
+    height: 30px;
+    background-color: #000;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    justify-content: flex-end;
+  }
+
+  
+  .com {
+    padding: 10px;
+  }
+
+  .com input[type="submit"]{
+    width: 100px;
+    height: 32.5px;
+    font-size: 12px;
+  }

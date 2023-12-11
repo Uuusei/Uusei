@@ -1,0 +1,62 @@
+<div class="all4">
+<h1>GeekTwitter</h1>
+<h3>投稿詳細</h3>
+<div class="work">
+  <p><%= @work.exercise %></p>
+  <p><%= @work.menu %></p>
+  <p><%= @work.created_at %></p>
+
+  <p>
+  <strong>時間</strong>
+  <%= @work.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<% if user_signed_in? %>
+      <% if current_user.already_disliked?(@work) %>
+        <%= link_to work_dislike_path(@work), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @work.dislikes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to work_dislikes_path(@work), method: :post do %>
+          <i class="far fa-heart"></i><%= @work.dislikes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+    <i class="far fa-heart"></i><%= @work.dislikes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_work_path(@work.id) %>
+</div>
+
+
+
+  
+
+  
+<div class="nocomment-wrapper">
+<p>コメント一覧</p>
+<% @nocomments.each do |c| %>
+  <div>
+    <%= c.user.email unless c.user.blank? %>
+    <br>
+    <%= c.content %>
+  </div>
+    <br>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= form_with(model: [@work, @nocomment], local: true) do |f| %>
+    <%= f.text_area :content %>
+    <%= button_tag type: "submit" do %>
+      <i class="far fa-nocomments"></i> コメントする
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to "投稿一覧に戻る", works_path %>
+<%= link_to "編集する", edit_work_path(@work.id) %>
+
+<% @work.tags.each do |tag| %>
+  <span><%= tag.name %></span>
+<% end %>
+
+</div>

@@ -1,0 +1,18 @@
+<br>
+<p class="title3">投稿編集</p>
+<div class="all3">
+    <%= form_for @work do |f| %>
+      <div class="post-container3">
+      <%= f.label :種目 %>
+      <br>
+      <%= f.text_field :exercise, class: "akitomo0", size: "140" %>   
+      <br>     
+      <br>
+      <%= f.label :回数・セット数 %>
+      <br>
+      <%= f.text_field :menu, class: "akitomo", size: "140"%>
+      <br>
+      <%= f.submit "編集する" %>
+    <% end %>
+  </div>
+</div>

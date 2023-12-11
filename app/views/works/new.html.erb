@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag 'Wnew', :media => "all" %>
+
+<br>
+<p class="title">新規投稿</p>
+<div class="all">
+  <div class="post-container">
+    <%= form_for(@work, :url => { controller:'works', action:'create'})do |f| %>
+  
+      <%= f.label :種目 %>
+        <br>
+        <%= f.text_field :exercise, class: "akitomo4", size: "50" %>
+        <br>
+        <br>
+      <%= f.label :回数・セット数  %>
+        <br>
+        <%= f.text_field :menu, class: "akitomo5", size: "100"%>
+        <br>
+
+
+      <br>
+    <%= f.label :画像 %>
+      <br>
+      <%= f.file_field :photo %>
+      <br>
+    
+    <br>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <div class='form-check'>
+              <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box class: 'form-check-input' %>
+                  <%= tag.text %>
+              <% end %>
+          </div>
+    <% end %>
+    <br>
+
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
+    <br>
+
+    <%= f.submit "投稿する" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<br>
+<p class="title1">タグ検索</p>
+<div class=all2>
+  <div class="post1-container">
+    <%= form_tag({controller:"works",action:"index"}, method: :get) do  |t| %>
+      <div class="tag">
+        <p class="tagtag">
+        タグ一覧
+        </p>
+        <br>
+        <% Tag.all.each do |t| %>
+            <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+        <% end %>
+
+        <div class="bottun">
+        <%= submit_tag '検索' %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+      
+    <div class="tagg">
+      <%= form_tag({controller:"works",action:"index"}, method: :get) do %>
+        <%= text_field_tag :tag %>
+        <%= submit_tag 'タグを追加' %>
+      <% end %>
+    </div>
+  </div>
+</div>

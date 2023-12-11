@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Original</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <script src="https://kit.fontawesome.com/8ceb2c43a3"  crossorigin="anonymous"></script> 
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Let's exercise</h1>
+      <div class="header-list">
+
+        <div class="head1">
+          <% if user_signed_in? %>
+            <div class="com"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></div>
+          <% else %>
+              <div class="com"><%= link_to "新規登録", new_user_registration_path %></div>
+              <div class="com"><%= link_to "ログイン", new_user_session_path %></div>
+          <% end %>
+        </div>
+
+        <div class="head2">
+          <div class="com"><%= link_to 'トップページ', works_top_path %></div>
+          <% if user_signed_in? %>
+            <div class="com"><%= link_to "マイページ", user_path(current_user.id) %></div>
+          <% end %>
+          <div class="com"><%= link_to '新規投稿', new_work_path %></div>
+          <div class="com"><%= link_to '投稿一覧', works_path %></div>
+          <div class="com"><%= link_to 'カレンダー', works_calender_path %></div>
+          <div class="com"><%= link_to 'タグ', works_tag_path %></div>
+          <div class="com"><%= link_to 'ダイエットページ', diets_path %></div>
+        </div>
+
+      </div>
+    </header>
+
+    <main>
+     <%= yield %>
+    </main>
+    <footer>
+      <p>Copyright © GeekSalon All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

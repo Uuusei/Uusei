@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag 'Dnew', :media => "all" %>
+
+<h1>オリプロ</h1>
+<h3>新規投稿ページ</h3>
+<div class="post-container5">
+  <p class="title">投稿フォーム</p>
+    <%= form_for(@diet, :url => { controller:'diets', action:'create'}), html: { class: "akitomo2" }do |f| %>
+    <%= f.label :投稿内容 %>
+      <br>
+      <%= f.text_field :stretch,size: 140%>
+      <br>
+      
+    <%= f.label :結果  %>
+      <br>
+      <%= f.text_field :result,size: 140%>
+      <br>
+    
+      <br>
+    <%= f.label :画像 %>
+      <br>
+      <%= f.file_field :image %>
+      <br>
+
+    <%= f.submit "送信"%>
+    <br>
+
+  <% end %>
+  <%= link_to "一覧に戻る", diets_path %>
+</div>

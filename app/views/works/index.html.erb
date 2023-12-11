@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag 'Windex', :media => "all" %>
+
+<div class="picture">
+ <h1>トレーニング</h1>
+ <h3>一覧ページ</h3>
+  <div class="works-container">
+    <% @works.each do |t| %>
+      <div class="work">
+        <div class="main-box">
+          <div class="left-container">
+            <%= t.exercise %><%= t.menu %>
+            <%= image_tag t.photo_url, size: "250x200" if t.photo? %>
+          </div>
+        
+          <div class="right-container">
+            <%= link_to "詳細へ", work_path(t.id) %>
+            <%= link_to "編集する", edit_work_path(t.id) %>
+            <%= button_to "削除する", work_path(t.id), method: :delete %>
+
+            <%= t.user.email %> 
+
+            <% if user_signed_in? %>
+            <% if current_user.already_disliked?(t) %>
+                <%= link_to work_dislike_path(id: t.id, work_id: t.id), method: :delete do %>
+                  <i class="fas fa-heart"></i><%= t.dislikes.count %>
+                <% end %>
+            <% else %>
+                <%= link_to work_dislikes_path(id: t.id, work_id: t.id), method: :post do %>
+                  <i class="far fa-heart"></i><%= t.dislikes.count %>
+                <% end %>
+            <% end %>
+            <% else %>
+            <i class="far fa-heart"></i><%= t.dislikes.count %>
+            <% end %>
+          </div>
+
+        </div>
+          <p class="time"><%= t.created_at %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

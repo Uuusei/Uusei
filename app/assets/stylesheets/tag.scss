@@ -1,0 +1,53 @@
+.post1-container {
+    margin: 50px auto;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+.title1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  border-bottom: solid#262626;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.akitomo3 {
+  width: 95%;
+  height: 35px;
+}
+
+input[type="submit"] {
+  width: 200px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.tag{
+  height: 35vh;
+  background-color: #F2F2F2;
+  margin: 0% 10%;
+  border-radius: 10px;
+}
+
+.tagtag{
+  font-size: 15px;
+}
+
+.tagg{
+  text-align: center;
+}
+
+
+
+.all2{
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65)));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 90vh;
+}

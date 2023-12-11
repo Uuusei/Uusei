@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag 'Dindex', :media => "all" %>
+
+<%= link_to 'トレーニングページ', works_path %>
+
+<h1>ダイエット</h1>
+<h3>一覧ページ</h3>
+<%= link_to "新規投稿へ", new_diet_path %>
+<div class="diets-container">
+  <% @diets.each do |t| %>
+
+    <div class="diet">
+      <div class="main-box">
+
+        <div class="left-container">
+          <%= t.stretch %>
+          <%= t.result %>
+          <%= image_tag t.image_url, size: "250x200" if t.image? %>
+        </div>
+
+        <div class="right-container">
+          <%= link_to "詳細へ", diet_path(t.id) %>
+          <%= link_to "編集する", edit_diet_path(t.id) %>
+          <%= button_to "削除する", diet_path(t.id), method: :delete %>
+
+          <%= t.user.email %>
+          <%= t.stretch %>
+          <%= t.result %>
+
+          <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+              <%= link_to diet_like_path(id: t.id, diet_id: t.id), method: :delete do %>
+                <i class="fas fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to diet_likes_path(id: t.id, diet_id: t.id), method: :post do %>
+                <i class="far fa-heart"></i><%= t.likes.count %>
+              <% end %>
+          <% end %>
+          <% else %>
+          <i class="far fa-heart"></i><%= t.likes.count %>
+          <% end %>
+          
+        </div>
+
+      </div>
+        <p class="time"><%= t.created_at %></p>
+    </div>
+  <% end %>
+</div>
